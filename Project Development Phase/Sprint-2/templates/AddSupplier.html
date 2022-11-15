@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddSupplier</title>
+    <!----======== CSS ======== -->
+	<link rel="stylesheet" href="{{url_for('static',filename='css/AddProducts.css')}}">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!--<title>Responsive Regisration Form </title>--> 
+</head>
+<body>
+    <div class="container">
+        <header>Add Supplier</header>
+
+        <form method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Supplier Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Supplier ID</label>
+                            <input type="text" placeholder="Enter ID" required name="supID">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Supplier Name</label>
+                            <input type="text" placeholder="Enter Name" name="name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Location</label>
+                            <input type="text" placeholder="Enter Location" name="location" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Phone Number</label>
+                            <input type="number" placeholder="Enter Phone Number" name="phone" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Product Group</label>
+                            <input type="text" placeholder="Enter Product Group" name="pro_grp" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Supplier Mail_ID</label>
+                            <input type="text" placeholder="Enter Mail_ID" name="email" required>
+                        </div>
+                                                
+                    </div>
+                </div>
+
+                <div class="details personal">
+                    {% with messages = get_flashed_messages() %}  
+                     {% if messages %}  
+                        {% for message in messages %}  
+                            <!--<center> <p style="color:green"></p>  </center>-->
+                            <span class="title">{{ message }}</span>
+                        {% endfor %}  
+                     {% endif %} 
+                    {% endwith %}
+                    <div class="buttons">
+                        <button class="sumbit" formaction="backProSup">
+                            <span class="btnText">Back</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                        <button class="sumbit" formaction="addSup">
+                            <span class="btnText">Add</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                        <button class="sumbit" formaction="updateSup">
+                            <span class="btnText">Update</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+
+                        <button class="sumbit" formaction="deleteSup">
+                            <span class="btnText">Delete</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+
+            </div>
+        </form>
+    </div>
+	<script src="{{url_for('static',filename='Js/AddProducts.js')}}"></script>
+</body>
+</html>

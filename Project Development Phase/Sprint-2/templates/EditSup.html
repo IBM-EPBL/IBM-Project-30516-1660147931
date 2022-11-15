@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/AddProducts.css')}}">     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!--<title>Responsive Regisration Form </title>--> 
+</head>
+<body>
+    <!--{% if value %}
+        input is{{value}}
+    {% else %}
+        input is:
+    {% endif %}-->
+    <div class="container">
+        <header>Edit Supplier</header>
+
+        <form method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Supplier Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Supplier Name</label>
+                            <input type="text" placeholder="Enter Name" name="name">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Location</label>
+                            <input type="text" placeholder="Enter Location" name="location">
+                        </div>
+                        <div class="input-field edit">
+                            <label>Supplier ID:{{id}}</label>
+                            <label>Supplier Name:{{name}}</label>
+                            <label>Location:{{location}}</label>
+                        </div>
+                        <div class="input-field">
+                            <label>Phone Number</label>
+                            <input type="number" placeholder="Enter Phone Number" name="phone" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Supplier Mail_ID</label>
+                            <input type="text" placeholder="Enter Mail_ID" name="email" required>
+                        </div>                  
+                        <div class="input-field edit">
+                            <label>Phone:{{ph}}</label>
+                            <label>Group:{{grp}}</label>
+                            <label>Mail ID:{{mail}}</label>
+                        </div>
+                            <!--<input type="text" placeholder="Enter ID" name="pro_id" required>-->
+                    </div>
+                </div>
+                <div class="details personal">
+                {% with messages = get_flashed_messages() %}  
+                     {% if messages %}  
+                        {% for message in messages %}  
+                            <!--<center> <p style="color:green"></p>  </center>-->
+                            <span class="title">{{ message }}</span>
+                        {% endfor %}  
+                    {% endif %} 
+                {% endwith %} 
+                    <div class="buttons">
+                        <button class="sumbit" formaction="EditBackSup">
+                            <span class="btnText">Back</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                        <button class="sumbit" formaction="{{url_for('Edit_Update_Sup',id=id,grp=grp)}}">
+                            <span class="btnText">Update</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+
+            </div>
+        </form>
+    </div>
+	<script src="{{url_for('static',filename='Js/AddProducts.js')}}"></script>
+</body>
+</html>

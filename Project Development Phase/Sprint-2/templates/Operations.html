@@ -1,0 +1,47 @@
+{% extends "MainPage.html" %}
+{% block title%}DashBoard{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/Operation.css')}}">
+{% endblock %}
+{% block content %}
+<div class="but">
+<center>
+    <div class="buttons">
+        <!--<a class="button"href="#">Button</a>-->
+        <button class="sumbit">
+            <span class="btnText"><a href="#onclick" target="_blank">Product</a></span>
+            <i class="uil uil-navigator"></i>
+        </button>
+    </div>
+    <div class="buttons">
+        <!--<a class="button"href="#">Button</a>-->
+        <button class="sumbit">
+            <span class="btnText"><a href="AddSupplier" target="_blank">Supplier</a></span>
+            <i class="uil uil-navigator"></i>
+        </button>
+    </div>
+</center>
+</div>
+<div id="onclick" class="overlay">
+    <div class="popup">
+        <h1 Style="color:#4070f4; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Alert...</h1>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            <!--Supplier Count:{{tot_sup}}
+            <br>-->
+            {% if tot_sup==0 %}
+                <br><h3>You Don't Have Supplier! Add supplier!</h3>
+            {% else %}
+                <br><h3>Add Product</h3>
+            {% endif %}
+        </div>
+        <div class="buttons">
+            <!--<a class="button"href="#">Button</a>-->
+            <button class="sumbit">
+                <span class="btnText"><a href="AddProducts" target="_blank">Add Products</a></span>
+                <i class="uil uil-navigator"></i>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
