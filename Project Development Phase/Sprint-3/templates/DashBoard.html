@@ -1,0 +1,100 @@
+{% extends "MainPage.html" %}
+{% block title%}DashBoard{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/DashBoard.css')}}">
+{% endblock %}
+{% block content %}
+    <!-- MAIN -->
+	<!--<div id='template' class="template">-->
+            <main>
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Dashboard</h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li><i class='bx bx-chevron-right' ></i></li>
+                            <li>
+                                <a class="active" href="#">Welcome {{username}},</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="/sendreport" class="btn-download">
+                        <i class='bx bxs-cloud-download' ></i>
+                        <span class="text">Send Report To Mail</span>
+                    </a>
+                </div>
+                                            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-calendar-check' ></i>
+                        <span class="text">
+                            <h3>{{products}}</h3>
+                            <p>Total Products</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group' ></i>
+                        <span class="text">
+                            <h3>{{supplier}}</h3>
+                            <p>Suppliers</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bx-trending-down' ></i>
+                        <span class="text">
+                            <h3>{{min}}</h3>
+                            <p>Minimum Stock</p>
+                        </span>
+                    </li>
+                </ul>
+    
+    
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Product Group</h3>
+                            <i class='bx bx-search' ></i>
+                            <i class='bx bx-filter' ></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product Group</th>
+                                    <th>Product Count</th>
+                                    <th>Supplier</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for inlist in listpy %}
+                                <tr>
+                                    <td>{{inlist.PRODUCT_GRP}}</td>
+                                    <td>{{inlist.COUNT}}</td>
+                                    <td>{{inlist.SUPPLIER}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="todo">
+                        <div class="head">
+                            <h3>Vendors</h3>
+                            <i class='bx bx-plus' ></i>
+                            <i class='bx bx-filter' ></i>
+                        </div>
+                        <ul class="todo-list">
+                            {% for inlist in listsup %}
+                            <li class="completed">
+                                <p>{{inlist.SUPPLIER_NAME}} - {{inlist.SUP_DASH}}</p>
+                                <i class='bx bx-dots-vertical-rounded' ></i>
+                                <!--<i class='bx bxs-checkbox-checked' ></i>-->
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </main>
+            <!-- MAIN -->
+        <!--</div>-->
+{% endblock %}

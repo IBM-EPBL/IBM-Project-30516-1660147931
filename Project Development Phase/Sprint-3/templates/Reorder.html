@@ -1,1 +1,36 @@
-
+{% extends "MainPage.html" %}
+{% block title%}Order Products{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/Reorder.css')}}">
+{% endblock %}
+{% block content %}
+<div class="wrapper">
+  <div class="title">
+    <h1>Order Products</h1>
+  </div>
+  <form action="/sendordermail" method="POST">
+  <div class="contact-form">
+    <div class="input-fields">
+      <input type="text" class="input" placeholder="To" name="tomail">
+      <input type="text" class="input" placeholder="Subject" name="subject">
+      <!--<input type="text" class="input" placeholder="Phone">--
+      <input type="text" class="input" placeholder="Subject">-->
+    </div>
+    <div class="msg">
+      <textarea placeholder="Message" name="text"></textarea>
+      {% if ordermail %}
+      <div class="title">
+        <h3>{{ordermail}}</h3>
+      </div>
+      {% endif %}
+      <div class="buttons">
+      <button class="sumbit">
+        <span class="btnText">Send</span>
+        <i class="uil uil-navigator"></i>
+      </button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}
