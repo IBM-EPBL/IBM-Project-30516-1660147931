@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IStoCk</title>
+	<title>{% block title%}{% endblock %}</title>
+    <!--bootstrap--><link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="{{url_for('static',filename='css/MainPage.css')}}">
+	{% block style %}{% endblock %}   
+	<script>
+		window.watsonAssistantChatOptions = {
+		  integrationID: "e9f04c7c-d8db-48f7-9947-f80357d44388", // The ID of this integration.
+		  region: "us-south", // The region your integration is hosted in.
+		  serviceInstanceID: "2708cb0d-9713-42b3-b1ac-42da255363a8", // The ID of your service instance.
+		  onLoad: function(instance) { instance.render(); }
+		};
+		setTimeout(function(){
+		  const t=document.createElement('script');
+		  t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+		  document.head.appendChild(t);
+		});
+	  </script>
+</head>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">IStoCk</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+			<!--<li class="active">-->
+				<a href="/DashBoard">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/products">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">My Store</span>
+				</a>
+			</li>
+            <li>
+				<a href="/Supplier">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Suppliers</span>
+				</a>
+			</li>
+			<li>
+				<a  href="/Reorder">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Order</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="/Operation">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Product/Supplier</span>
+				</a>
+			</li>
+			<li>
+				<a href="logout" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="search_nav" method="GET">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." name="search_nav">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notifications">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#onclick" class="profile">
+				<img src="img/account.jpg">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+		<div id="onclick" class="overlay">
+			<div class="popup">
+				<h1 Style="color:#4070f4; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Change Password</h1>
+				<a class="close" href="#">&times;</a>
+				<div class="content">
+					<!--Supplier Count:{{tot_sup}}
+					<br>
+					{% if tot_sup==0 %}
+						<br><h3>You Don't Have Supplier! Add supplier!</h3>
+					{% else %}
+						<br><h3>Add Product</h3>
+					{% endif %}-->
+				</div>
+				<form action="updatepassword" method="POST">
+				<div class="input-field">
+				  <div class="input-field">
+					<label>Enter email:</label>
+					<input type="text" placeholder="Enter ID" name="email" required>
+				</div>
+				  <label>Old Password:</label>
+				  <input type="password" placeholder="Enter OTP" name="oldpass" required>
+				</div>
+				<div class="input-field">
+				<label>New Password</label>
+				<input type="password" placeholder="Enter New Password" name="newpass" required>
+				</div>
+				
+				<div class="buttons">
+					<!--<a class="button"href="#">Button</a>-->
+					<button class="sumbit">
+						<span class="btnText">Change</span>
+						<i class="uil uil-navigator"></i>
+					</button>
+				</div>
+			  </form>
+			</div>
+		  </div>
+	{% block content %}{% endblock %}
+	</section>
+	
+	<script src="{{url_for('static',filename='Js/MainPage.js')}}"></script>
+</body>
+</html>
