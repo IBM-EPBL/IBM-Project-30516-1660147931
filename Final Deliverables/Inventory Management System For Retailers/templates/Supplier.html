@@ -1,0 +1,78 @@
+{% extends "MainPage.html" %}
+{% block title%}Order Products{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/Product.css')}}">
+{% endblock %}
+{% block content %}
+
+      <!--<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>-->
+      <Section id="content">
+        <span class="outter">
+        <main>
+        <div style="overflow-x:auto;">
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Supplier</h3>
+                    <form method="GET" action="/search_sup">
+                        <span class="search-box">
+                        <input class="search-txt" type="text"  placeholder="Search By Location" name="searchsup">
+                        <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+                        <!--<a class="search-btn" href="/search_pro">
+                            <i class='bx bx-search' ></i>
+                        </a>-->
+                    </span><!--<i class='bx bx-filter' ></i>-->
+                    </form>
+                    <!--<i class='bx bx-search' ></i>
+                    <i class='bx bx-filter' ></i>-->
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supplier ID</th>
+                            <th>Supplier</th>
+                            <th>Location</th>
+                            <th>Phone Number</th>
+                            <th>Product Group</th>
+                            <th>Product Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for supplier in listpy %}
+                        <tr> 
+                            <td>{{supplier.SUPPLIER_ID}}</td>
+                            <td>{{supplier.SUPPLIER_NAME}}</td>
+                            <td>{{supplier.LOCATION}}</td>
+                            <td>{{supplier.PH_NUMBER}}</td>
+                            <td>{{supplier.PRODUCT_GRP}}</td>
+                            <td>{{supplier.SUPMAIL_ID}}</td>
+                            <td><div class="buttons ">
+                                <!--<a class="button"href="#">Button</a>-->
+                                <button class="sumbit">
+                                    <span class="btnText"><a href="/EditSup/{{supplier.SUPPLIER_ID}}/{{supplier.SUPPLIER_NAME}}/{{supplier.LOCATION}}/{{supplier.PH_NUMBER}}/{{supplier.PRODUCT_GRP}}/{{supplier.SUPMAIL_ID}}" class="btn btn-primary pull-right">Edit</a>
+                                    </span>
+                                    <i class="uil uil-navigator"></i>
+                                </button>
+                            </div>
+                            </td>
+                            <td>
+                                <div class="buttons ">
+                                    <!--<a class="button"href="#">Button</a>-->
+                                    <button class="sumbit ">
+                                        <span class="btnText"><a href="/deleteSupBy/{{supplier.SUPPLIER_ID}}">Delete</a></span>
+                                        <i class="uil uil-navigator"></i>
+                                    </button>
+                                </div>
+                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        </Section>
+        </span>
+        </main>
+{% endblock %}

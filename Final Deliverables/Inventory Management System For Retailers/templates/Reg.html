@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/Reg.css')}}">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   <title>Inventory Managemanet System For Retailers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="{{url_for('static', filename='ISTOCK.png')}}" alt="">
+        <div class="text">
+          <span class="text-1">Every new friend is a <br> new adventure</span>
+          <span class="text-2">Let's get connected</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="{{url_for('static', filename='ISTOCK.png')}}" alt="">
+        <div class="text">
+          <span class="text-1">ɒ ƨi bnɘiɿʇ wɘn γɿɘvƎ <br> ɘɿυɈnɘvbɒ wɘn</span>
+          <span class="text-2">bɘɈɔɘnnoɔ Ɉɘϱ ƨ'Ɉɘ⅃</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+      <div class="form-content">
+          
+        <div class="signup-form">
+          <div class="title">Signup</div>
+        <form action="register" method="post">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-building"></i>
+                <input type="text" placeholder="Enter your company name" name="company" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-map-marker "></i>
+                <input type="text" placeholder="Enter your location" required name="location">
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" required name="email">
+              </div>
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Enter User ID" required name="username">
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" required name="password">
+              </div>
+              {% if mesaagemail %}
+                  <center> <p style="color:red">{{mesaagemail}}</p></center>
+              {% endif %}
+              {% if registeraccount %}
+                  <center> <p style="color:red">{{registeraccount}}</p></center>
+              {% endif %}
+              {% if registermsg %}
+                  <center> <p style="color:green">{{registermsg}}</p></center>
+              {% endif %}
+              <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+      </form>
+     </div>
+    
+    
+    <div class="login-form">
+    <div class="title">Login</div>
+    <form action="login" method="post">
+      <div class="input-boxes">
+        <div class="input-box">
+          <i class="fas fa-envelope"></i>
+          <input type="text" placeholder="Enter your email" required name="username">
+        </div>
+        <div class="input-box">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Enter your password" required name="password">
+        </div>
+        <div class="text"><a href="#onclick">Forgot password?</a></div>
+        <div class="button input-box">
+          <input type="submit" value="Sumbit">
+        </div>
+        <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+        
+    {% if error %}  
+    <p><strong style="color:red">Error</strong>: {{error}}</p>  
+  {% endif %} 
+  {% with messages = get_flashed_messages() %}  
+  {% if messages %}  
+      {% for message in messages %}  
+          <center> <p style="color:green">{{ message }}</p>  </center>
+      {% endfor %}  
+  {% endif %} 
+  {% endwith %}
+  {% if msgpass %}
+        <center> <p style="color:green">{{msgpass}}</p>  </center>
+      {% endif %}
+      </div>
+  </form>
+</div>
+    </div>
+  </div>
+</div>
+<div id="onclick" class="overlay">
+  <div class="popup">
+      <h1 Style="color:#4070f4; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Change Password</h1>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+          <!--Supplier Count:{{tot_sup}}
+          <br>
+          {% if tot_sup==0 %}
+              <br><h3>You Don't Have Supplier! Add supplier!</h3>
+          {% else %}
+              <br><h3>Add Product</h3>
+          {% endif %}-->
+      </div>
+      <form action="updatepassword" method="POST">
+      <div class="input-field">
+        <div class="input-field">
+          <label>Enter email:</label>
+          <input type="text" placeholder="Enter ID" name="email" required>
+      </div>
+        <label>Company Name+User ID</label>
+        <input type="text" placeholder="companyname+userId" name="oldpass" required>
+      </div>
+      <div class="input-field">
+      <label>New Password</label>
+      <input type="password" placeholder="Enter New Password" name="newpass" required>
+      </div>
+      
+      <div class="buttons">
+          <!--<a class="button"href="#">Button</a>-->
+          <button class="sumbit">
+              <span class="btnText">Change</span>
+              <i class="uil uil-navigator"></i>
+          </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends "MainPage.html" %}
+{% block title%}Order Products{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/Product.css')}}">
+<!-- CSS only -->
+{% endblock %}
+{% block content %}
+      <!--<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>-->
+      
+      <Section id="content">
+        <span class="outter">
+        <main>
+            
+        <div style="overflow-x:auto;">
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Products</h3>
+                    <form method="GET" action="/search_pro">
+                        <span class="search-box">
+                        <input class="search-txt" type="text"  placeholder="Search by supplier" name="searchpro">
+                        <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+                        <!--<a class="search-btn" href="/search_pro">
+                            <i class='bx bx-search' ></i>
+                        </a>-->
+                    </span><!--<i class='bx bx-filter' ></i>-->
+                    </form>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Group</th>
+                            <th>Product Name</th>
+                            <th>Total Quantity</th>
+                            <th>Available</th>
+                            <th>Shipped</th>
+                            <th>Minimum Stock</th>
+                            <th>Supplier</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in listpy %}
+                        <tr>
+                            <td>{{product.PRODUCT_ID}}</td>
+                            <td>{{product.PRODUCT_GRP}}</td>
+                            <td>{{product.PRODUCT_NAME}}</td>
+                            <td>{{product.TOT_QUANTITY}}</td>
+                            <td>{{product.AVAILABLE_PRODUCT}}</td>
+                            <td>{{product.SHIPPED}}</td>
+                            <td>{{product.MIN_STOCK}}</td>
+                            <td>{{product.SUPPLIER}}</td>
+                            <td>{{product.DATE}}</td>
+                            <td><div class="buttons ">
+                                <!--<a class="button"href="#">Button</a>-->
+                                <button class="sumbit">
+                                    <span class="btnText"><a href="/Edit/{{product.PRODUCT_ID}}/{{product.PRODUCT_GRP}}/{{product.PRODUCT_NAME}}/{{product.TOT_QUANTITY}}/{{product.AVAILABLE_PRODUCT}}/{{product.SHIPPED}}/{{product.MIN_STOCK}}/{{product.SUPPLIER}}/{{product.DATE}}" class="btn btn-primary pull-right">Edit</a>
+                                    </span>
+                                    <i class="uil uil-navigator"></i>
+                                </button>
+                            </div>
+                            
+                                
+                                </td>
+                            <td>
+                                <div class="buttons ">
+                                    <!--<a class="button"href="#">Button</a>-->
+                                    <button class="sumbit ">
+                                        <span class="btnText"><a href="/deleteProBy/{{product.PRODUCT_ID}}">Delete</a></span>
+                                        <i class="uil uil-navigator"></i>
+                                    </button>
+                                </div>
+                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        </Section>
+        </span>
+        </main>
+{% endblock %}

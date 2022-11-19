@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/AddProducts.css')}}">     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!--<title>Responsive Regisration Form </title>--> 
+</head>
+<body>
+    <div class="container">
+        <header>Add Products</header>
+
+        <form method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Product Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Product ID</label>
+                            <input type="text" placeholder="Enter ID" name="pro_id" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Product Group</label>
+                            <select name="pro_grp" required>
+                                <option disabled selected>Select Product Group</option>
+                                {% for drop in drop_pro %}
+                                <option value="{{drop}}">{{drop}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Product Name</label>
+                            <input type="text" placeholder="Enter ID" name="pro_name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Total Quantity</label>
+                            <input type="number" placeholder="Enter Total Quantity" name="tot_quantity" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Available</label>
+                            <input type="number" placeholder="Enter Avaliable" name="available" value="val" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Shipped</label>
+                            <input type="number" placeholder="Enter Shipped Quantity" name="Shipped" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Minimum Stock for this Product</label>
+                            <input type="number" placeholder="Enter Minimum Stock" name="min_stock" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Supplier</label>
+                            <select name="sup" required>
+                                <option disabled selected>Select Supplier</option>
+                                {% for drop in drop_sup %}
+                                <option value="{{drop}}">{{drop}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date</label>
+                            <input type="date" placeholder="Enter date" name="date" required >
+                        </div>                   
+                    </div>
+                </div>
+            </form>
+                <div class="details personal">
+                {% with messages = get_flashed_messages() %}  
+                     {% if messages %}  
+                        {% for message in messages %}  
+                            <!--<center> <p style="color:green"></p>  </center>-->
+                            <span class="title">{{ message }}</span>
+                        {% endfor %}  
+                    {% endif %} 
+                {% endwith %} 
+                    <div class="buttons">
+                        <button class="submit">
+                            <span class="btnText"><a href="backProSup">Back</a></span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                        <button class="sumbit" formaction="addPro">
+                            <span class="btnText">Add</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                        <button class="sumbit" formaction="updatePro">
+                            <span class="btnText">Update</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+
+                        <button class="sumbit" formaction="deletePro">
+                            <span class="btnText">Delete</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+
+            </div>
+        
+    </div>
+	<script src="{{url_for('static',filename='Js/AddProducts.js')}}"></script>
+    
+</body>
+</html>
